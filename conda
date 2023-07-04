@@ -1,0 +1,10 @@
+root用户条件下激活conda
+source /home/jw/miniconda3/bin/activate
+
+conda create -n velocyto 创建env
+conda activate velocyto  激活env
+conda install samtools   env内安装软件
+conda install numpy scipy cython numba matplotlib scikit-learn h5py click
+pip install pysam
+ # `PyPI`安装
+pip install velocyto
