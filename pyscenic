@@ -1,0 +1,59 @@
+1. 首先重建pyscenic环境
+2. 安装pyscenic
+3. 运行run_pyscenic.sh，主要是激活环境后
+
+
+1. 提取矩阵（R）
+write_expre=function(sce_test){
+write.csv(t(as.matrix(sce_test@assays$RNA@counts)),file = "F:/BaiduSyncdisk/R code/SCENIC/SCENIC_exp.csv")}
+write_expre(NK)
+
+2. loom转换(Python) 可以在自己conda目录下输入 python change.py运行脚本，脚本内容：
+import os, sys
+os.getcwd()
+os.listdir(os.getcwd())
+import loompy as lp
+import numpy as np
+import scanpy as sc
+x=sc.read_csv("F:\BaiduSyncdisk\R code\SCENIC\SCENIC_exp.csv")
+row_attrs = {"Gene": np.array(x.var_names),}
+col_attrs = {"CellID": np.array(x.obs_names)}
+lp.create("F:\BaiduSyncdisk\R code\SCENIC\SCENIC.loom",x.X.transpose(),row_attrs,col_attrs)
+
+3. 将loom文件传入linux 可以运行脚本 nohup bash run_pyscenic.sh &
+
+.sh脚本内容
+conda activate pyscenic
+dir=/home/jw/zxjbisoft/SCENIC/
+tfs=$dir/allTFs_hg38.txt
+feather=$dir/hg38_10kbp_up_10kbp_down_full_tx_v10_clust.genes_vs_motifs.rankings.feather
+tbl=$dir/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl 
+input_loom=$dir/SCENIC.loom
+ls $tfs  $feather  $tbl  
+
+pyscenic grn \
+--num_workers 20 \
+--output adj.sample.tsv \
+--method grnboost2 \
+$input_loom  $tfs 
+
+
+pyscenic ctx \
+adj.sample.tsv $feather \
+--annotations_fname $tbl \
+--expression_mtx_fname $input_loom  \
+--mode "dask_multiprocessing" \
+--output reg.csv \
+--num_workers 20  \
+--mask_dropouts
+
+pyscenic aucell \
+$input_loom \
+reg.csv \
+--output out_SCENIC.loom \
+--num_workers 20 
+
+4. 结果：下面结果，传到R再可视化
+10M  3 12 09:15 out_SCENIC.loom
+6.7M  3 12 09:15 pbmc_3k.loom
+13M  3 12 09:15 reg.csv
