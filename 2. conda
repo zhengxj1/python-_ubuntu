@@ -13,3 +13,6 @@ conda deactivate 退出环境
 pip install pysam
  # `PyPI`安装
 pip install velocyto
+
+#  安装成功后需要更新系统环境变量文件
+source ~/.bashrc
