@@ -71,6 +71,14 @@ reg.csv \
 13M  3 12 09:15 reg.csv
 
 ################docker########
+# pySCENIC CLI version (recommended).
+docker pull aertslab/pyscenic:0.12.1
+podman pull docker://aertslab/pyscenic:0.12.1
+
+# pySCENIC CLI version + ipython kernel + scanpy.
+docker pull aertslab/pyscenic_scanpy:0.12.1_1.9.1
+podman pull docker://aertslab/pyscenic_scanpy:0.12.1_1.9.1
+
 docker run -it --rm -v /home/jw/zxjbisoft/SCENIC:/scenicdata  aertslab/pyscenic:0.12.1 \
 pyscenic grn \
 --num_workers 20 \
