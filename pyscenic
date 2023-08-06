@@ -8,6 +8,18 @@ write_expre=function(sce_test){
 write.csv(t(as.matrix(sce_test@assays$RNA@counts)),file = "F:/BaiduSyncdisk/R code/SCENIC/SCENIC_exp.csv")}
 write_expre(NK)
 
+下载文件
+# 准备数据库 （人）
+mkdir -p cisTarget
+cd cisTarget
+# ranking database
+wget https://resources.aertslab.org/cistarget/databases/homo_sapiens/hg38/refseq_r80/mc9nr/gene_based/hg38__refseq-r80__500bp_up_and_100bp_down_tss.mc9nr.feather
+wget https://resources.aertslab.org/cistarget/databases/homo_sapiens/hg38/refseq_r80/mc9nr/gene_based/hg38__refseq-r80__10kb_up_and_down_tss.mc9nr.feather
+# motif database
+wget https://resources.aertslab.org/cistarget/motif2tf/motifs-v9-nr.hgnc-m0.001-o0.0.tbl
+# TF list
+wget https://github.com/aertslab/pySCENIC/blob/master/resources/hs_hgnc_tfs.txt
+
 2. loom转换(Python) 可以在自己conda目录下输入 python change.py运行脚本，脚本内容：
 import os, sys
 os.getcwd()
