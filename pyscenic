@@ -69,3 +69,35 @@ reg.csv \
 10M  3 12 09:15 out_SCENIC.loom
 6.7M  3 12 09:15 pbmc_3k.loom
 13M  3 12 09:15 reg.csv
+
+################docker########
+docker run -it --rm -v /home/jw/zxjbisoft/SCENIC:/scenicdata  aertslab/pyscenic:0.12.1 \
+pyscenic grn \
+--num_workers 20 \
+--output /scenicdata/adj.sample.tsv \
+--method grnboost2 \
+/scenicdata/SCENIC.loom \
+/scenicdata/allTFs_hg38.txt
+
+docker run -it --rm -v /home/jw/zxjbisoft/SCENIC:/scenicdata  aertslab/pyscenic:0.12.1 \
+pyscenic   ctx \
+/scenicdata/adj.sample.tsv \
+/scenicdata/hg38__refseq-r80__500bp_up_and_100bp_down_tss.mc9nr.genes_vs_motifs.rankings.feather \
+--annotations_fname /scenicdata/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl \
+--expression_mtx_fname /scenicdata/SCENIC.loom \
+--mode "dask_multiprocessing" \
+--output /scenicdata/reg.csv \
+--num_workers 3 \
+--mask_dropouts
+
+docker run -it --rm -v /home/jw/zxjbisoft/SCENIC:/scenicdata  aertslab/pyscenic:0.12.1 \
+pyscenic  aucell \
+/scenicdata/SCENIC.loom \
+/scenicdata/reg.csv \
+--output /scenicdata/out_SCENIC.loom \
+--num_workers 20
+
+
+
+
+
