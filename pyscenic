@@ -103,7 +103,7 @@ pyscenic grn \
 docker run -it --rm -v /home/jw/zxjbisoft/SCENIC:/scenicdata  aertslab/pyscenic:0.12.1 \
 pyscenic   ctx \
 /scenicdata/adj.sample.tsv \
-/scenicdata/hg38__refseq-r80__500bp_up_and_100bp_down_tss.mc9nr.genes_vs_motifs.rankings.feather \
+/scenicdata/hg38__refseq-r80__10kb_up_and_down_tss.mc9nr.genes_vs_motifs.rankings.feather \
 --annotations_fname /scenicdata/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl \
 --expression_mtx_fname /scenicdata/SCENIC.loom \
 --mode "dask_multiprocessing" \
