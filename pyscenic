@@ -38,7 +38,7 @@ lp.create("F:\BaiduSyncdisk\R code\SCENIC\SCENIC.loom",x.X.transpose(),row_attrs
 conda activate pyscenic
 dir=/home/jw/zxjbisoft/SCENIC/
 tfs=$dir/allTFs_hg38.txt
-feather=$dir/hg38_10kbp_up_10kbp_down_full_tx_v10_clust.genes_vs_motifs.rankings.feather
+feather=$dir/hg38__refseq-r80__10kb_up_and_down_tss.mc9nr.genes_vs_motifs.rankings.feather
 tbl=$dir/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl 
 input_loom=$dir/SCENIC.loom
 ls $tfs  $feather  $tbl  
