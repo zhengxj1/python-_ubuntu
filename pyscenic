@@ -1,3 +1,16 @@
+conda create -n pyscenic python=3.7 
+conda activate pyscenic 
+
+conda install -y numpy
+conda install -y -c anaconda cytoolz
+conda install -y scanpy
+pip install pyscenic 
+
+
+
+
+
+
 1. 首先重建pyscenic环境
 2. 安装pyscenic
 3. 运行run_pyscenic.sh，主要是激活环境后
