@@ -1,1 +1,4 @@
+
 pip install -i https://pypi.org/simple CellphoneDB
+
+conda activate pyscenic
