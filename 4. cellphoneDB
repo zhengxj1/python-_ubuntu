@@ -1,4 +1,28 @@
 
+nano cellphoneDB.sh
+cat >gc_cellphoneDB.bash
+file_count=./cellphoneDB_counts.txt
+file_anno=./cellphoneDB_meta.txt
+outdir=./cellphoneDB_Output
+
+if [ ! -d ${outdir} ]; then
+mkdir ${outdir}
+fi
+cellphonedb method statistical_analysis ${file_anno} ${file_count} --counts-data hgnc_symbol --output-path ${outdir} --threshold 0.01 --threads 10 
+
+conda active cpdb
+nohup bash cellphoneDB.sh 1>GSM5573466.log 2>&1 &
+
+
+
+
+
+
+
+
+
+
+
 pip install -i https://pypi.org/simple CellphoneDB
 
 conda activate pyscenic
