@@ -1,0 +1,3 @@
+mageck count -l library.csv -n demo --sample-label T_471_1,T_471_2,T_471_3,T_CRISPR_1,T_CRISPR_2,T_CRISPR_3,T_DMSO_1,T_DMSO_2,T_DMSO_3  --fastq T_471_1.clean.R1.fastq T_471_1.clean.R2.fastq, T_471_2.clean.R1.fastq T_471_2.clean.R2.fastq, T_471_3.clean.R1.fastq T_471_3.clean.R2.fastq,  T_CRISPR_1.clean.R1.fastq T_CRISPR_1.clean.R2.fastq, T_CRISPR_2.clean.R1.fastq T_CRISPR_2.clean.R2.fastq,T_CRISPR_3.clean.R1.fastq T_CRISPR_3.clean.R2.fastq, T_DMSO_1.clean.R1.fastq T_DMSO_1.clean.R2.fastq,  T_DMSO_2clean.R1.fastq T_DMSO_2.clean.R2.fastq, T_DMSO_3.clean.R1.fastq  T_DMSO_3.clean.R2.fastq
+
+
